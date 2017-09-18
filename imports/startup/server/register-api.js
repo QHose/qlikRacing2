@@ -1,4 +1,4 @@
 // Register your apis here
 
-import '../../api/links/methods.js';
-import '../../api/links/server/publications.js';
+import '../../api/RaceDB/methods.js';
+import '../../api/RaceDB/server/publications.js';

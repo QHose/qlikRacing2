@@ -1,0 +1,16 @@
+.race {
+    height: 20vh;
+    background: url('http://websamuraj.pl/race/automobile.png') no-repeat, url('http://websamuraj.pl/race/suv.png') no-repeat, url('http://websamuraj.pl/race/tourist.png') no-repeat, url('http://websamuraj.pl/race/motor-sports.png') no-repeat, url('http://websamuraj.pl/race/excavators.png') no-repeat, url('http://websamuraj.pl/race/car.png') no-repeat, url('http://websamuraj.pl/race/road2.jpeg') repeat;
+    background-size: auto 15%, auto 15%, auto 15%, auto 10%, auto 20%, auto 15%, auto 32%;
+    background-position: top 20% left 5%, top 35% left 5%, top 60% left 5%, top 70% left 5%, top 90% left 5%, top 28% left -160%, top 0% left 0%;
+    -webkit-transition: all 30s easy-out;
+    transition: all 10s ease;
+}
+
+.race:hover {
+    background-position: top 20% left 85%, top 35% left 95%, top 60% left 45%, top 70% left 75%, top 90% left 20%, top 62% left 280%, top 0% left -1200%;
+}
+
+body {
+    margin: 0
+}

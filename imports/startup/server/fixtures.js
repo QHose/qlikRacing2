@@ -1,34 +1,33 @@
 // Fill the DB with example data on startup
 
 import { Meteor } from 'meteor/meteor';
-import { Links } from '../../api/links/links.js';
+import { RaceDB } from '../../api/RaceDB/RaceDB.js';
 
 Meteor.startup(() => {
-  // if the Links collection is empty
-  if (Links.find().count() === 0) {
-    const data = [
-      {
-        title: 'Do the Tutorial',
-        url: 'https://www.meteor.com/try',
-        createdAt: new Date(),
-      },
-      {
-        title: 'Follow the Guide',
-        url: 'http://guide.meteor.com',
-        createdAt: new Date(),
-      },
-      {
-        title: 'Read the Docs',
-        url: 'https://docs.meteor.com',
-        createdAt: new Date(),
-      },
-      {
-        title: 'Discussions',
-        url: 'https://forums.meteor.com',
-        createdAt: new Date(),
-      },
-    ];
+    // if the RaceDB collection is empty
+    if (RaceDB.find().count() === 0) {
+        const data = [{
+                carId: 1,
+                LapNr: 1,
+                LapTime: new Date(),
+            },
+            {
+                carId: 1,
+                LapNr: 2,
+                LapTime: new Date(),
+            },
+            {
+                carId: 2,
+                LapNr: 1,
+                LapTime: new Date(),
+            },
+            {
+                carId: 2,
+                LapNr: 2,
+                LapTime: new Date(),
+            },
+        ];
 
-    data.forEach(link => Links.insert(link));
-  }
+        data.forEach(link => RaceDB.insert(link));
+    }
 });

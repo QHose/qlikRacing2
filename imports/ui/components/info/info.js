@@ -1,32 +1,32 @@
-import { Links } from '/imports/api/links/links.js';
+import { RaceDB } from '/imports/api/RaceDB/RaceDB.js';
 import { Meteor } from 'meteor/meteor';
 import './info.html';
 
-Template.info.onCreated(function () {
-  Meteor.subscribe('links.all');
+Template.info.onCreated(function() {
+    Meteor.subscribe('RaceDB.all');
 });
 
 Template.info.helpers({
-  links() {
-    return Links.find({});
-  },
+    RaceDB() {
+        return RaceDB.find({});
+    },
 });
 
 Template.info.events({
-  'submit .info-link-add'(event) {
-    event.preventDefault();
+    'submit .info-link-add' (event) {
+        event.preventDefault();
 
-    const target = event.target;
-    const title = target.title;
-    const url = target.url;
+        const target = event.target;
+        const title = target.title;
+        const url = target.url;
 
-    Meteor.call('links.insert', title.value, url.value, (error) => {
-      if (error) {
-        alert(error.error);
-      } else {
-        title.value = '';
-        url.value = '';
-      }
-    });
-  },
+        Meteor.call('RaceDB.insert', title.value, url.value, (error) => {
+            if (error) {
+                alert(error.error);
+            } else {
+                title.value = '';
+                url.value = '';
+            }
+        });
+    },
 });
