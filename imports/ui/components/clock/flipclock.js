@@ -2,17 +2,31 @@ import './flipclock.css';
 import './flipclock.html';
 
 Template.clock.onRendered(function() {
-    // var clock = $('.clock').FlipClock({
-    //     // ... your options here
-    // });
     var clock = $('.clock').FlipClock(100, {
         clockFace: 'Counter'
     });
+    console.log('------------------------------------');
+    console.log('clock', clock);
+    console.log('------------------------------------');
+
+    this.autorun(function() {
+        var stopwatch = StopWatch.findOne({})
+        console.log('stopwatch from database', stopwatch)
+        if (stopwatch.action === 'start') {
+            clock.start();
+        } else if (stopwatch.action === 'stop') {
+            clock.stop();
+        } else if (stopwatch.action === 'reset') {
+            clock.reset();
+        }
+    });
+
+
 
     setTimeout(function() {
         setInterval(function() {
             clock.increment();
-        }, 10);
+        }, 100);
     });
 })
 

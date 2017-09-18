@@ -4,7 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { RaceDB } from '../../api/RaceDB/RaceDB.js';
 
 Meteor.startup(() => {
-    // if the RaceDB collection is empty
+    console.log('Insert some dummy data if the RaceDB collection is empty');
     if (RaceDB.find().count() === 0) {
         const data = [{
                 carId: 1,

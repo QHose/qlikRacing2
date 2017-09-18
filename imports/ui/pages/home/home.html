@@ -1,60 +1,85 @@
-<template name="App_home">
+<template name="start">
 
-    <div class="ui container">
+  <div style="width:95%">
     <div class="ui two column internally celled very relaxed grid">
       <div class="column">
         <div class="row">
-          <h1 class="ui dividing header">
-            Race time
-          </h1>
-          {{> clock}}
+          <div class="ui two column grid">
+            <!-- RACE TIME -->
+            <div class="column">
+              <h1 class="ui dividing header">
+                Race time
+              </h1>
+              {{> clock}}
+            </div>
+            <!-- WEATHER -->
+            <div class="column">
+              <h1 class="ui dividing header">
+                Wheater conditions
+              </h1>
+              {{> wheater}}
+
+            </div>
+          </div>
         </div>
-        <div class="row">
-          <h1 class="ui dividing header">
-            Current wheater conditions
-          </h1>
-          {{> wheater}}
-        </div>
+
         <!-- image of track and KPI -->
         <div class="row">
           <div class="ui grid">
             <div class="row">
-              <div class="sixteen wide column">
-                <img class="ui fluid image" src="/images/racetrack.jpg">
-              </div>
+              <!-- <div class="eight wide column">
+                <h1 class="ui dividing header">
+                  Track overview
+                </h1>
+                <img class="ui fluid medium image" src="/images/racetrack.jpg">
+              </div> -->
+
             </div>
             <!-- KPI objects -->
             <div class="row">
-              <div class="eight wide column">
-
-                <h1 class="ui dividing header">
-                  Fastest lap
-                </h1>
-                10:48
+              <div class="sixteen wide column">
+                <div class="row">
+                  <h1 class="ui dividing header">
+                    Fastest lap
+                  </h1>
+                  <h2 style="margin:1em">3:24</h2>
+                  
+                  <!-- <iframe src='http://192.168.0.124/anon/single/?appid=80a8f107-1b67-4811-8cc1-d22bbb00c9dc&obj=TDmGjuF&opt=nointeraction&select=clearall'
+                    style='border:none;height: 116px;'></iframe> -->
+                </div>
+                <div class="row">
+                  <h1 class="ui dividing header">
+                    Top 10 teams
+                  </h1>
+                  <iframe src='http://192.168.0.124/anon/single/?appid=80a8f107-1b67-4811-8cc1-d22bbb00c9dc&obj=sjhFPWz&opt=nointeraction&select=clearall'
+                    style='border:none; width:100%; height:40vh'></iframe>
+                </div>
               </div>
-              <div class="eight wide column">
-                <h1 class="ui dividing header">
-                  TOP 10 teams
-                </h1>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum ea accusantium voluptate corrupti ipsum sunt at libero quaerat
-                suscipit qui est aspernatur fuga delectus asperiores, sed cupiditate. Modi, alias praesentium.
-              </div>
-
             </div>
 
           </div>
         </div>
       </div>
+
+      <!-- SECOND COLUMN RACING TABLES -->
       <div class="column">
         <h1 class="ui dividing header">
-          What are the laptimes per team?
+          What are the current laptimes?
         </h1>
-        {{> teamTable}}
+
+        <div class="ui two column grid">
+
+          <div class="column">
+            {{> teamTable teamId=1}}
+          </div>
+          <div class="column">
+            {{> teamTable teamId=2}}
+          </div>
+
+        </div>
       </div>
     </div>
-    <!-- <div class="race"></div> -->
   </div>
-  
 </template>
 
 <template name="wheater">
@@ -64,7 +89,7 @@
   <div id="awcc1505714390356" class="aw-widget-current" data-locationkey="249758" data-unit="c" data-language="en-us" data-useip="false"
     data-uid="awcc1505714390356"></div>
   <script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script> -->
-  <a href="https://www.accuweather.com/nl/nl/amsterdam/249758/weather-forecast/249758" class="aw-widget-legal">
+  <a href="https://www.accuweather.com/nl/nl/utrecht/249758/weather-forecast/249758" class="aw-widget-legal">
       
       </a>
   <div id="awcc1505714095193" class="aw-widget-current" data-locationkey="249758" data-unit="c" data-language="nl" data-useip="false"
@@ -73,51 +98,28 @@
 </template>
 
 <template name="teamTable">
+  <h1 class="ui header">
+    Team {{teamId}}
+  </h1>
 
   <table class="ui celled padded table">
     <thead>
       <tr>
-        <th class="single line">Evidence Rating</th>
-        <th>Effect</th>
-        <th>Efficacy</th>
-        <th>Consensus</th>
-        <th>Comments</th>
+        <th class="single line">Lap</th>
+        <th>Time</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>
-          <h2 class="ui center aligned header">A</h2>
-        </td>
-        <td class="single line">
-          Power Output
-        </td>
-        <td>
-          <div class="ui star rating" data-rating="3" data-max-rating="3"></div>
-        </td>
-        <td class="right aligned">
-          80% <br>
-          <a href="#">18 studies</a>
-        </td>
-        <td>Creatine supplementation is the reference compound for increasing muscular creatine levels; there is variability
-          in this increase, however, with some nonresponders.</td>
-      </tr>
-      <tr>
-        <td>
-          <h2 class="ui center aligned header">A</h2>
-        </td>
-        <td class="single line">
-          Weight
-        </td>
-        <td>
-          <div class="ui star rating" data-rating="3" data-max-rating="3"></div>
-        </td>
-        <td class="right aligned">
-          100% <br>
-          <a href="#">65 studies</a>
-        </td>
-        <td>Creatine is the reference compound for power improvement, with numbers from one meta-analysis to assess potency</td>
-      </tr>
+      {{#each lap in RaceDBTeam1}}
+        <tr>
+          <td>
+            {{log lap}} {{lap.LapNr}}
+          </td>
+          <td>
+            {{lap.LapTime}}
+          </td>
+        </tr>
+      {{/each}}
     </tbody>
   </table>
 </template>
