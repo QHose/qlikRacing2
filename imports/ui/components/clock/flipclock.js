@@ -1,6 +1,24 @@
 import './flipclock.css';
 import './flipclock.html';
 
+Template.clock.onRendered(function() {
+    var clock = $('.your-clock').FlipClock({
+        // ... your options here
+    });
+})
+
+Template.clock.helpers({
+
+});
+
+Template.clock.events({
+    'click #foo': function(event, template) {
+
+    }
+});
+
+
+
 /*
 	Base.js, version 1.1a
 	Copyright 2006-2010, Dean Edwards
