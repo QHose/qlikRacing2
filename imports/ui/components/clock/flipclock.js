@@ -2,8 +2,17 @@ import './flipclock.css';
 import './flipclock.html';
 
 Template.clock.onRendered(function() {
-    var clock = $('.your-clock').FlipClock({
-        // ... your options here
+    // var clock = $('.clock').FlipClock({
+    //     // ... your options here
+    // });
+    var clock = $('.clock').FlipClock(100, {
+        clockFace: 'Counter'
+    });
+
+    setTimeout(function() {
+        setInterval(function() {
+            clock.increment();
+        }, 10);
     });
 })
 
