@@ -31,25 +31,28 @@ Template.start.events({
 //
 
 Template.stopwatch.onCreated(function() {
+    Session.set('stoppedTime', null);
+    Session.set('startTime', null);
 
     try {
         this.autorun(function() {
             var stopWatchStatus = StopWatch.findOne({})
-            console.log('stopwatch from database', stopWatchStatus)
-            console.log('stopWatchStatus.action', stopWatchStatus.action)
+                // console.log('stopwatch from database', stopWatchStatus)
+                // console.log('stopWatchStatus.action', stopWatchStatus.action)
             if (stopWatchStatus) {
                 if (stopWatchStatus.action === 'start') {
+                    Session.set('stoppedTime', null);
                     Session.set('startTime', new Date().getTime());
                     console.log('------------------------------------');
                     console.log('stopwatch started:');
                     console.log('------------------------------------');
                 } else if (stopWatchStatus.action === 'stop') {
                     console.log('------------------------------------');
-                    console.log('stopwatch stopped, elapsed mili secs: ');
+                    console.log('stopwatch stopped: ');
                     console.log('------------------------------------');
-                    Session.set('startTime', null); // stops the timer
+                    Session.set('stoppedTime', 'stopped');
                 } else if (stopWatchStatus.action === 'reset') {
-
+                    Session.set('startTime', null); // stops the timer                    
                 }
             }
         });
@@ -58,19 +61,15 @@ Template.stopwatch.onCreated(function() {
     }
 })
 
-
-
-Template.stopwatch.onRendered(function() {
-    console.log('------------------------------------');
-    console.log('stopwatch rendered');
-    console.log('------------------------------------');
-
-})
-
 Template.stopwatch.helpers({
     duration: function() {
         var start = Session.get('startTime');
-        return start ? Chronos.currentTime(10) - start : null; // updates every hundred milliseconds
+        if (start && Session.get('stoppedTime')) {
+            return Session.get('stoppedTime')
+        } else {
+            return start ? Chronos.currentTime(10) - start : null; // updates every hundred milliseconds
+        }
+
     }
 });
 
