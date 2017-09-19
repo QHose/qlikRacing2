@@ -1,19 +1,41 @@
 import './flipclock.css';
 import './flipclock.html';
+import {
+    RaceDB,
+    StopWatch
+} from '/imports/api/RaceDB/RaceDB.js';
+
 
 Template.clock.onRendered(function() {
     var clock = $('.clock').FlipClock(100, {
-        clockFace: 'Counter'
+        clockFace: 'Counter',
+        autoStart: false,
+        callbacks: {
+            stop: function() {
+                console.log('------------------------------------');
+                console.log('The clock has stopped!');
+                console.log('------------------------------------');
+            }
+        }
     });
     console.log('------------------------------------');
     console.log('clock', clock);
     console.log('------------------------------------');
+
+    window.clock = clock;
+    clock.start();
+    clock.stop();
 
     this.autorun(function() {
         var stopwatch = StopWatch.findOne({})
         console.log('stopwatch from database', stopwatch)
         if (stopwatch.action === 'start') {
             clock.start();
+            setTimeout(function() {
+                setInterval(function() {
+                    clock.increment();
+                }, 100);
+            });
         } else if (stopwatch.action === 'stop') {
             clock.stop();
         } else if (stopwatch.action === 'reset') {
@@ -22,12 +44,6 @@ Template.clock.onRendered(function() {
     });
 
 
-
-    setTimeout(function() {
-        setInterval(function() {
-            clock.increment();
-        }, 100);
-    });
 })
 
 Template.clock.helpers({
@@ -134,7 +150,9 @@ Base.prototype = {
             if (!Base._prototyping && typeof this != "function") {
                 extend = this.extend || extend;
             }
-            var proto = { toSource: null };
+            var proto = {
+                toSource: null
+            };
             // do the "toString" and other methods manually
             var hidden = ["constructor", "toString", "valueOf"];
             // if we are prototyping then include the constructor

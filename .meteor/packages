@@ -21,7 +21,7 @@ kadira:flow-router      # FlowRouter is a very simple router for Meteor
 kadira:blaze-layout     # Layout manager for blaze (works well with FlowRouter)
 less                    # Leaner CSS language
 msavin:mongol 			# lets you see the mongoDB in the client interface
-
+remcoder:chronos # stopwatch
 semantic:ui
 # iron:router
 deanius:promise

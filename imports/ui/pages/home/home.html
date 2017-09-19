@@ -1,7 +1,6 @@
 <template name="start">
-
   <div style="width:95%">
-    <div class="ui two column internally celled very relaxed grid">
+    <div class="ui two column internally celled very relaxed stackable grid">
       <div class="column">
         <div class="row">
           <div class="ui two column grid">
@@ -10,7 +9,7 @@
               <h1 class="ui dividing header">
                 Race time
               </h1>
-              {{> clock}}
+              {{> stopwatch}}
             </div>
             <!-- WEATHER -->
             <div class="column">
@@ -82,19 +81,14 @@
   </div>
 </template>
 
-<template name="wheater">
-  <!-- <a href="https://www.accuweather.com/en/nl/amsterdam/249758/weather-forecast/249758" class="aw-widget-legal">
+<template name="stopwatch">
     
-  </a>
-  <div id="awcc1505714390356" class="aw-widget-current" data-locationkey="249758" data-unit="c" data-language="en-us" data-useip="false"
-    data-uid="awcc1505714390356"></div>
-  <script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script> -->
-  <a href="https://www.accuweather.com/nl/nl/utrecht/249758/weather-forecast/249758" class="aw-widget-legal">
-      
-      </a>
-  <div id="awcc1505714095193" class="aw-widget-current" data-locationkey="249758" data-unit="c" data-language="nl" data-useip="false"
-    data-uid="awcc1505714095193"></div>
-  <script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
+  
+ </template>
+
+<template name="wheater">
+    <a href="https://www.accuweather.com/en/nl/utrecht/250560/weather-forecast/250560" class="aw-widget-legal">      
+      </a><div id="awcc1505814100020" class="aw-widget-current"  data-locationkey="250560" data-unit="c" data-language="en-us" data-useip="false" data-uid="awcc1505814100020"></div><script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
 </template>
 
 <template name="teamTable">
