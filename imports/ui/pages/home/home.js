@@ -70,6 +70,9 @@ Template.stopwatch.helpers({
             return '0: 00: 00';
         }
 
+    },
+    running: function() {
+        return Session.get('startTime');
     }
 });
 

@@ -1,6 +1,6 @@
 <template name="start">
   <div style="width:95%">
-    <div class="ui two column internally celled very relaxed stackable grid">
+    <div class="ui two column very relaxed stackable grid">
       <div class="column">
         <div class="row">
           <div class="ui two column grid">
@@ -74,7 +74,22 @@
 </template>
 
 <template name="stopwatch">
-  <h1>{{duration}}</h1> 
+  <div class="ui two column grid">
+<div class="column">
+  {{#if running}}
+  <div class="clockContainer">
+    <div class="clockTop"></div>
+      <div class='clockOut'>
+        <div class="clockNeedle"></div>
+      </div>
+  </div>
+{{/if}}
+</div>
+<div class="column">  <h1 style="font-size:3em">
+  {{duration}}</h1> 
+</div>
+
+  </div>
  </template>
 
 <template name="wheater">
