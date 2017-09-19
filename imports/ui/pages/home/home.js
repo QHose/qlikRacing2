@@ -43,14 +43,10 @@ Template.stopwatch.onCreated(function() {
                 if (stopWatchStatus.action === 'start') {
                     Session.set('stoppedTime', null);
                     Session.set('startTime', new Date().getTime());
-                    console.log('------------------------------------');
                     console.log('stopwatch started:');
-                    console.log('------------------------------------');
                 } else if (stopWatchStatus.action === 'stop') {
-                    console.log('------------------------------------');
                     console.log('stopwatch stopped: ');
-                    console.log('------------------------------------');
-                    Session.set('stoppedTime', 'stopped');
+                    Session.set('stoppedTime', Date.now() - Session.get('startTime'));
                 } else if (stopWatchStatus.action === 'reset') {
                     Session.set('startTime', null); // stops the timer                    
                 }
@@ -66,12 +62,22 @@ Template.stopwatch.helpers({
         var start = Session.get('startTime');
         if (start && Session.get('stoppedTime')) {
             return Session.get('stoppedTime')
+        } else if (start) {
+            return numberWithCommas(Chronos.currentTime(10) - start) // updates every hundred milliseconds
         } else {
-            return start ? Chronos.currentTime(10) - start : null; // updates every hundred milliseconds
+            return '0: 00: 00';
         }
 
     }
 });
+
+function numberWithCommas(x) {
+    x = x.toString();
+    var pattern = /(-?\d+)(\d{3})/;
+    while (pattern.test(x))
+        x = x.replace(pattern, "$1:$2");
+    return x;
+}
 
 
 //
