@@ -30,44 +30,49 @@ Template.start.events({
 // ─── STOPWATCH ──────────────────────────────────────────────────────────────────
 //
 
-// Template.stopwatch.onCreated(function() {
-//     stopWatch = Stopwatch.create();
+Template.stopwatch.onCreated(function() {
 
-//     this.autorun(function() {
-//         var stopWatchStatus = StopWatch.findOne({})
-//         console.log('stopwatch from database', stopWatchStatus)
-//         console.log('stopWatchStatus.action', stopWatchStatus.action)
+    try {
+        this.autorun(function() {
+            var stopWatchStatus = StopWatch.findOne({})
+            console.log('stopwatch from database', stopWatchStatus)
+            console.log('stopWatchStatus.action', stopWatchStatus.action)
+            if (stopWatchStatus) {
+                if (stopWatchStatus.action === 'start') {
+                    Session.set('startTime', new Date().getTime());
+                    console.log('------------------------------------');
+                    console.log('stopwatch started:');
+                    console.log('------------------------------------');
+                } else if (stopWatchStatus.action === 'stop') {
+                    console.log('------------------------------------');
+                    console.log('stopwatch stopped, elapsed mili secs: ');
+                    console.log('------------------------------------');
+                    Session.set('startTime', null); // stops the timer
+                } else if (stopWatchStatus.action === 'reset') {
 
-//         if (stopWatchStatus.action === 'start') {
-//             stopWatch.start();
-//             console.log('------------------------------------');
-//             console.log('stopwatch started:', stopWatch.elapsedTicks);
-//             console.log('------------------------------------');
-//         } else if (stopWatchStatus.action === 'stop') {
-//             console.log('------------------------------------');
-//             console.log('stopwatch stopped, elapsed mili secs: ', stopWatch.elapsedMilliseconds);
-//             console.log('------------------------------------');
-//             clock.stop();
-//         } else if (stopWatchStatus.action === 'reset') {
-//             clock.reset();
-//         }
-//     });
-// })
+                }
+            }
+        });
+    } catch (err) {
+        console.error('autorun stopwatch error', err)
+    }
+})
 
 
 
-// Template.stopwatch.onRendered(function() {
-//     console.log('------------------------------------');
-//     console.log('stopwatch reender');
-//     console.log('------------------------------------');
+Template.stopwatch.onRendered(function() {
+    console.log('------------------------------------');
+    console.log('stopwatch rendered');
+    console.log('------------------------------------');
 
-// })
+})
 
-// Template.stopwatch.helpers({
-//     duration: function() {
-
-//     }
-// });
+Template.stopwatch.helpers({
+    duration: function() {
+        var start = Session.get('startTime');
+        return start ? Chronos.currentTime(10) - start : null; // updates every hundred milliseconds
+    }
+});
 
 
 //

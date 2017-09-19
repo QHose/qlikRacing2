@@ -1,5 +1,5 @@
 body {
     background: url(/images/flag.jpg);
-    background-size: 80px 60px;
+    background-size: cover;
     background-repeat: no-repeat;
 }

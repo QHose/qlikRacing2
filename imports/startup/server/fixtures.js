@@ -1,10 +1,14 @@
 // Fill the DB with example data on startup
 
 import { Meteor } from 'meteor/meteor';
-import { RaceDB } from '../../api/RaceDB/RaceDB.js';
+import { RaceDB, StopWatch } from '../../api/RaceDB/RaceDB.js';
 
 Meteor.startup(() => {
-    console.log('Insert some dummy data if the RaceDB collection is empty');
+    console.log('Insert some dummy data if the RaceDB and stopwatch collection is empty');
+    if (StopWatch.find().count() === 0) {
+        StopWatch.insert({ action: 'start' });
+    }
+
     if (RaceDB.find().count() === 0) {
         const data = [{
                 carId: 1,
