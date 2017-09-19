@@ -12,7 +12,7 @@ JsonRoutes.add("get", "/start_stopwatch", function(req, res, next) {
 });
 
 JsonRoutes.add("post", "/start_stopwatch", function(req, res, next) {
-    console.log('start_stopwatch POST request: "', req.data);
+    console.log('start_stopwatch POST request: "', req);
     StopWatch.upsert({
         name: "timer"
     }, {
