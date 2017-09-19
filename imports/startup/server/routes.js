@@ -53,7 +53,15 @@ JsonRoutes.add("post", "/reset_stopwatch", function(req, res, next) {
 // ─── LAPTIMES ───────────────────────────────────────────────────────────────────
 //
 
-JsonRoutes.add("post", "/laptimes", function(req, res, next) {
-    console.log('POST to laptimes: "', req.data);
-    StopWatch.insert(req.data);
+Router.route("/laptimes", function() {
+    var req = this.request;
+    var res = this.response;
+
+    var data = this.request.body;
+    console.log('laptimes data', data);
+    RaceDB.insert(data);
+    res.end('hello from the server\n');
+
+}, {
+    where: "server"
 });

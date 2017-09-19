@@ -23,7 +23,7 @@ less                    # Leaner CSS language
 msavin:mongol 			# lets you see the mongoDB in the client interface
 remcoder:chronos # stopwatch
 semantic:ui
-# iron:router
+iron:router
 deanius:promise
 simple:json-routes
 
@@ -32,3 +32,4 @@ johanbrook:publication-collector  # Test a Meteor publication by collecting its 
 juliancwirko:postcss
 jquery
 session
+meteorhacks:picker
