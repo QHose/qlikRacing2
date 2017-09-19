@@ -16,6 +16,8 @@ import {
 
 Template.start.onCreated(function() {
     Meteor.subscribe('RaceDB.all');
+    Meteor.subscribe('StopWatch');
+
 });
 
 Template.start.events({
@@ -87,15 +89,10 @@ function numberWithCommas(x) {
 
 
 Template.teamTable.helpers({
-    RaceDBTeam1() {
+    RaceDBTeam(carId) {
         return RaceDB.find({
-            carId: 'car01'
-        });
-    },
-    RaceDBTeam2() {
-        return RaceDB.find({
-            carId: 'car02'
-        });
+            carId: carId,
+        }, { sort: { lapNr: -1 }, limit: 10 });
     },
     log(lap) {
         console.log('helper teamTable, lap: ', lap)

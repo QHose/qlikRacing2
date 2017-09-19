@@ -17,8 +17,8 @@ standard-minifier-js@2.1.1    # JS minifier run for production mode
 es5-shim@4.6.15                # ECMAScript 5 compatibility for older browsers
 ecmascript@0.8.2              # Enable ECMAScript2015+ syntax in app code
 
-kadira:flow-router      # FlowRouter is a very simple router for Meteor
-kadira:blaze-layout     # Layout manager for blaze (works well with FlowRouter)
+# kadira:flow-router      # FlowRouter is a very simple router for Meteor
+# kadira:blaze-layout     # Layout manager for blaze (works well with FlowRouter)
 less                    # Leaner CSS language
 msavin:mongol 			# lets you see the mongoDB in the client interface
 remcoder:chronos # stopwatch

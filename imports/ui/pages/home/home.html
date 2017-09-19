@@ -39,19 +39,11 @@
               <div class="sixteen wide column">
                 <div class="row">
                   <h1 class="ui dividing header">
-                    Fastest lap
-                  </h1>
-                  <h2 style="margin:1em">3:24</h2>
-                  
-                  <!-- <iframe src='http://192.168.0.184/anon/single/?appid=8f8ea8c9-f694-4b34-ad5b-c9553c637bc3&obj=TDmGjuF&opt=nointeraction&select=clearall'
-                    style='border:none;height: 116px;'></iframe> -->
-                </div>
-                <div class="row">
-                  <!-- <h1 class="ui dividing header">
                     Top 10 teams
                   </h1>
-                  <iframe src='http://192.168.0.184/anon/single/?appid=8f8ea8c9-f694-4b34-ad5b-c9553c637bc3&obj=sjhFPWz&opt=nointeraction&select=clearall'
+                  <!-- <iframe src='http://localhost/single/?appid=c5b280bd-525b-4241-8529-149dd755b7da&obj=sjhFPWz&opt=nointeraction&select=clearall'
                     style='border:none; width:100%; height:40vh'></iframe> -->
+                    <iframe src='http://localhost:81/single/?appid=c5b280bd-525b-4241-8529-149dd755b7da&obj=sjhFPWz&opt=nointeraction&select=clearall' style='border:none; width:100%; height:40vh'></iframe>
                 </div>
               </div>
             </div>
@@ -69,10 +61,10 @@
         <div class="ui two column grid">
 
           <div class="column">
-            {{> teamTable teamId=1}}
+            {{> teamTable teamId='car01'}}
           </div>
           <div class="column">
-            {{> teamTable teamId=2}}
+            {{> teamTable teamId='car02'}}
           </div>
 
         </div>
@@ -103,7 +95,7 @@
       </tr>
     </thead>
     <tbody>
-      {{#each lap in RaceDBTeam1}}
+      {{#each lap in RaceDBTeam teamId}}
         <tr>
           <td>
             {{log lap}} 
