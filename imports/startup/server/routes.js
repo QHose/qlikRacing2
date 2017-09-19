@@ -42,11 +42,18 @@ JsonRoutes.add("post", "/stop_stopwatch", function(req, res, next) {
 });
 
 JsonRoutes.add("post", "/reset_stopwatch", function(req, res, next) {
-    console.log('RESET stopwatch POST request: "', req.data);
-    StopWatch.remove({
-        name: 'start'
-    });
+    console.log('RESET stopwatch POST request');
 
+    RaceDB.remove({});
+
+    StopWatch.upsert({
+        name: "timer"
+    }, {
+        name: "timer",
+        action: 'reset'
+    }, {
+        upsert: true
+    });
 });
 
 //

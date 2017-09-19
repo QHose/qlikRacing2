@@ -89,16 +89,16 @@ function numberWithCommas(x) {
 Template.teamTable.helpers({
     RaceDBTeam1() {
         return RaceDB.find({
-            carId: 1
+            carId: 'car01'
         });
     },
     RaceDBTeam2() {
         return RaceDB.find({
-            carId: 2
+            carId: 'car02'
         });
     },
     log(lap) {
-        console.log('lap', lap)
+        console.log('helper teamTable, lap: ', lap)
     }
 });
 

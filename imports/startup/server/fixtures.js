@@ -10,28 +10,15 @@ Meteor.startup(() => {
     }
 
     if (RaceDB.find().count() === 0) {
-        const data = [{
-                carId: 1,
-                LapNr: 1,
-                LapTime: new Date(),
-            },
-            {
-                carId: 1,
-                LapNr: 2,
-                LapTime: new Date(),
-            },
-            {
-                carId: 2,
-                LapNr: 1,
-                LapTime: new Date(),
-            },
-            {
-                carId: 2,
-                LapNr: 2,
-                LapTime: new Date(),
-            },
+        const data = [
+            { carId: "car02", lapNr: 43, lapTime: "0:6:417" },
+            { carId: "car02", lapNr: 33, lapTime: "0:4:417" },
+            { carId: "car02", lapNr: 13, lapTime: "0:6:417" },
+            { carId: "car01", lapNr: 43, lapTime: "0:6:417" },
+            { carId: "car01", lapNr: 33, lapTime: "0:4:417" },
+            { carId: "car01", lapNr: 13, lapTime: "0:6:417" }
         ];
 
-        data.forEach(link => RaceDB.insert(link));
+        data.forEach(lap => RaceDB.insert(lap));
     }
 });

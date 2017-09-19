@@ -43,15 +43,15 @@
                   </h1>
                   <h2 style="margin:1em">3:24</h2>
                   
-                  <!-- <iframe src='http://192.168.0.124/anon/single/?appid=80a8f107-1b67-4811-8cc1-d22bbb00c9dc&obj=TDmGjuF&opt=nointeraction&select=clearall'
+                  <!-- <iframe src='http://192.168.0.184/anon/single/?appid=8f8ea8c9-f694-4b34-ad5b-c9553c637bc3&obj=TDmGjuF&opt=nointeraction&select=clearall'
                     style='border:none;height: 116px;'></iframe> -->
                 </div>
                 <div class="row">
-                  <h1 class="ui dividing header">
+                  <!-- <h1 class="ui dividing header">
                     Top 10 teams
                   </h1>
-                  <iframe src='http://192.168.0.124/anon/single/?appid=80a8f107-1b67-4811-8cc1-d22bbb00c9dc&obj=sjhFPWz&opt=nointeraction&select=clearall'
-                    style='border:none; width:100%; height:40vh'></iframe>
+                  <iframe src='http://192.168.0.184/anon/single/?appid=8f8ea8c9-f694-4b34-ad5b-c9553c637bc3&obj=sjhFPWz&opt=nointeraction&select=clearall'
+                    style='border:none; width:100%; height:40vh'></iframe> -->
                 </div>
               </div>
             </div>
@@ -106,10 +106,11 @@
       {{#each lap in RaceDBTeam1}}
         <tr>
           <td>
-            {{log lap}} {{lap.LapNr}}
+            {{log lap}} 
+            {{lap.lapNr}}
           </td>
           <td>
-            {{lap.LapTime}}
+            {{lap.lapTime}}
           </td>
         </tr>
       {{/each}}
