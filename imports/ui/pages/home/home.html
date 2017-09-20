@@ -17,31 +17,31 @@
                 Wheater conditions
               </h1>
               <!-- {{> wheater}} -->
-              <img class="ui fluid medium image" src="/images/wheather.png" style="padding-left: 90px;">              
+              <img class="ui fluid image" src="/images/wheather.png">
             </div>
           </div>
         </div>
 
         <!-- image of track and KPI -->
         <div class="row">
-          <div class="ui grid">
-            <div class="row">
-              <div class="eight wide column">
+          <div class="ui two column grid">
+              <div class="column">
+</div>                  
+            <div class="column">
                 <h1 class="ui dividing header">
                   Track overview
                 </h1>
-                <img class="ui fluid centered medium image" src="/images/racetrack.jpg">
-              </div>
-              <div class="eight wide column">
+                <img class="ui fluid centered image" src="/images/racetrack.jpg">
+              <!-- <div class="eight wide column">
                 <h1 class="ui dividing header">
                   Statistics
                 </h1>
 <iframe src='http://192.168.0.108:81/anon/single/?appid=c5b280bd-525b-4241-8529-149dd755b7da&obj=TDmGjuF&opt=nointeraction&select=clearall' style='border:none; width: 100%'></iframe>
-              </div>
+              </div> -->
 
             </div>
             <!-- KPI objects -->
-            <div class="row">
+            <!-- <div class="row">
               <div class="sixteen wide column">
                 <div class="row">
                   <h1 class="ui dividing header">
@@ -51,7 +51,7 @@
                     <iframe src='http://192.168.0.108:81/anon/single/?appid=c5b280bd-525b-4241-8529-149dd755b7da&obj=sjhFPWz&opt=nointeraction&select=clearall' style='border:none; width:100%; height:40vh'></iframe>
                 </div>
               </div>
-            </div>
+            </div> -->
 
           </div>
         </div>
@@ -64,6 +64,7 @@
         </h1>
 
         <div class="ui two column grid">
+          <!-- {{# if teamTable teamId='car02'}} -->
 
           <div class="column">
             {{> teamTable teamId='car01'}}
@@ -71,7 +72,11 @@
           <div class="column">
             {{> teamTable teamId='car02'}}
           </div>
-
+          <!-- {{else}} -->
+          <!-- <h2>
+    Waiting for race to begin...    
+</h2> -->
+          <!-- {{/if}} -->
         </div>
       </div>
     </div>
@@ -79,27 +84,31 @@
 </template>
 
 <template name="stopwatch">
-  <div class="ui two column grid">
-<div class="column">
-  {{#if running}}
+  <!-- <div class="ui two column grid">
+<div class="column"> -->
+  <!-- {{#if running}}
   <div class="clockContainer">
     <div class="clockTop"></div>
       <div class='clockOut'>
         <div class="clockNeedle"></div>
       </div>
   </div>
-{{/if}}
-</div>
-<div class="column">  <h1 style="font-size:3em">
-  {{duration}}</h1> 
-</div>
+{{/if}} -->
+  <!-- </div> -->
+  <!-- <div class="column"> -->
+  <h1 style="font-size:3em">
+    {{duration}}</h1>
+  <!-- </div> -->
 
-  </div>
- </template>
+  <!-- </div> -->
+</template>
 
 <template name="wheater">
-    <a href="https://www.accuweather.com/en/nl/utrecht/250560/weather-forecast/250560" class="aw-widget-legal">      
-      </a><div id="awcc1505814100020" class="aw-widget-current"  data-locationkey="250560" data-unit="c" data-language="en-us" data-useip="false" data-uid="awcc1505814100020"></div><script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
+  <a href="https://www.accuweather.com/en/nl/utrecht/250560/weather-forecast/250560" class="aw-widget-legal">      
+      </a>
+  <div id="awcc1505814100020" class="aw-widget-current" data-locationkey="250560" data-unit="c" data-language="en-us"
+    data-useip="false" data-uid="awcc1505814100020"></div>
+  <script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
 </template>
 
 <template name="teamTable">
@@ -118,11 +127,15 @@
       {{#each lap in RaceDBTeam teamId}}
         <tr>
           <td>
-            {{log lap}} 
-            {{lap.lapNr}}
+            <!-- {{log lap}}  -->
+            <h1>
+              {{lap.lapNr}}
+            </h1>
           </td>
           <td>
-            {{lap.lapTime}}
+            <h2>
+              {{lap.lapTime}}
+            </h2>
           </td>
         </tr>
       {{/each}}
