@@ -1,5 +1,5 @@
-import './home.html';
-// import '../../components/clock/flipclock.js';
+import './rta.html';
+
 import {
     RaceDB,
     StopWatch
@@ -14,13 +14,13 @@ import {
 //
 
 
-Template.start.onCreated(function() {
+Template.rta.onCreated(function() {
     Meteor.subscribe('RaceDB.all');
     Meteor.subscribe('StopWatch');
 
 });
 
-Template.start.events({
+Template.rta.events({
     'contextmenu *': function(e, t) {
         e.stopPropagation();
         console.log('template instance:\n', t);

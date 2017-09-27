@@ -54,6 +54,9 @@ JsonRoutes.add("post", "/reset_stopwatch", function(req, res, next) {
     }, {
         upsert: true
     });
+    JsonRoutes.sendResult(res, {
+        data: 'Resetted watch'
+    });
 });
 
 //

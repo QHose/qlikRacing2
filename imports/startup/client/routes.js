@@ -3,26 +3,20 @@
 
 // Import needed templates
 import '../../ui/layouts/body/body.js';
-import '../../ui/pages/home/home.js';
+import '../../ui/pages/rta/rta.js';
 import '../../ui/pages/not-found/not-found.js';
 
-// // Set up all routes in the app
-// FlowRouter.route('/', {
-//     name: 'App.home',
-//     action() {
-//         BlazeLayout.render('App_body', { main: 'start' });
-//     },
+//http://iron-meteor.github.io/iron-router/
+// //map paths to blaze templates
+// Router.route('/', function() {
+//     Router.go('rta');
 // });
 
-// FlowRouter.notFound = {
-//     action() {
-//         BlazeLayout.render('App_body', { main: 'App_notFound' });
-//     },
-// };
+// Router.route('/rta', function() {
+//     this.render('rta');
+// });
 
-// //map paths to blaze templates
-Router.route('/', function() {
-    Router.go('start');
-});
-
-Router.route('/start');
+Router.route('/rta');
+Router.route('/admin');
+Router.route('/quiz');
+Router.route('/landinPage');

@@ -1,0 +1,7 @@
+{
+    "adminEmails": "dlm@qlik.com",
+    "public": {
+        "host": "localhost",
+        "MQTThost": "10.31.1.105"
+    }
+}
